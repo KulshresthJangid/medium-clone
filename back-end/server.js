@@ -1,17 +1,27 @@
 require('dotenv').config()
 const express = require('express')
-const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const bodyParser = require('body-parser')
+const path = require('path')
+
 const LoginRoute = require('./routes/authRoutes')
+const mediaRoute = require('./routes/mediaRoutes')
+const homeRoute = require('./routes/homeRoute')
+const db = require('./db/db')
 
 const app = express()
+app.use(express.static(path.join(__dirname, './public')))
+app.set('views', path.join(__dirname, './public/views'))
+app.set('view engine', 'ejs')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(express.json())
 app.use(LoginRoute)
+app.use(mediaRoute)
+app.use(homeRoute)
 
 
-
-const port = 3000 || process.env.PORT
+const port = process.env.PORT
 
 app.listen(port, () => {
     console.log(`server is up and running on port ${port}`)
