@@ -6,13 +6,12 @@ const path = require('path')
 
 const LoginRoute = require('./routes/authRoutes')
 const mediaRoute = require('./routes/mediaRoutes')
-const homeRoute = require('./routes/homeRoute')
 const db = require('./db/db')
 
 const app = express()
-app.use(express.static(path.join(__dirname, './public')))
-app.set('views', path.join(__dirname, './public/views'))
-app.set('view engine', 'ejs')
+// app.use(express.static(path.join(__dirname, './public')))
+// app.set('views', path.join(__dirname, './public/views'))
+// app.set('view engine', 'ejs')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
