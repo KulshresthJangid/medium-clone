@@ -23,5 +23,5 @@ app.use(homeRoute)
 const port = process.env.PORT
 
 app.listen(port, () => {
-    console.log(`server is up and running on port ${port}`)
+    console.log(`server is running on port ${port}`);
 })
